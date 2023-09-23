@@ -1,11 +1,11 @@
-#include <iostream>
-#include <cstring>
-#include <cctype>
-#include <iomanip>
+#include <iostream> """Librerias"""
+#include <cstring> 
+#include <cctype> 
+#include <iomanip> 
 
 using namespace std;
 
-bool esFuncion(const char* str) {
+bool esFuncion(const char* str) {        """verifica si la parte de la cadena es función"""
     const char* palabrasClave[] = { "main", "printf" };
     for (const char* palabra : palabrasClave) {
         if (strcmp(str, palabra) == 0) {
@@ -15,7 +15,7 @@ bool esFuncion(const char* str) {
     return false;
 }
 
-bool esPalabraClave(const char* str) {
+bool esPalabraClave(const char* str) {"""verifica si la parte de la cadena es palabra clave"""
     const char* palabrasClave[] = { "endl", "cout" };
     for (const char* palabra : palabrasClave) {
         if (strcmp(str, palabra) == 0) {
@@ -25,7 +25,7 @@ bool esPalabraClave(const char* str) {
     return false;
 }
 
-bool esIf(const char* str) {
+bool esIf(const char* str) {"""verifica si la parte de la cadena es if"""
     const char* palabrasClave[] = { "if" };
     for (const char* palabra : palabrasClave) {
         if (strcmp(str, palabra) == 0) {
@@ -36,7 +36,7 @@ bool esIf(const char* str) {
 }
 
 
-bool esElse(const char* str) {
+bool esElse(const char* str) {"""verifica si la parte de la cadena es else"""
     const char* palabrasClave[] = { "else" };
     for (const char* palabra : palabrasClave) {
         if (strcmp(str, palabra) == 0) {
@@ -46,7 +46,7 @@ bool esElse(const char* str) {
     return false;
 }
 
-bool esWhile(const char* str) {
+bool esWhile(const char* str) {"""verifica si la parte de la cadena es while"""
     const char* palabrasClave[] = { "while" };
     for (const char* palabra : palabrasClave) {
         if (strcmp(str, palabra) == 0) {
@@ -56,7 +56,7 @@ bool esWhile(const char* str) {
     return false;
 }
 
-bool esReturn(const char* str) {
+bool esReturn(const char* str) {"""verifica si la parte de la cadena es return"""
     const char* palabrasClave[] = { "return" };
     for (const char* palabra : palabrasClave) {
         if (strcmp(str, palabra) == 0) {
@@ -69,7 +69,7 @@ bool esReturn(const char* str) {
 // CAMBIAR TODO LO DE ARRIBA
 
 
-bool esTipo(const char* str) {
+bool esTipo(const char* str) {"""verifica si la parte de la cadena es tipo de variable"""
     const char* tipo[] = { "int", "float", "void" };
     for (const char* palabra : tipo) {
         if (strcmp(str, palabra) == 0) {
@@ -79,7 +79,7 @@ bool esTipo(const char* str) {
     return false;
 }
 
-bool contieneLetras(const char* texto) {
+bool contieneLetras(const char* texto) {"""verifica si la parte de la cadena contiene letras"""
     int longitud = strlen(texto);
     for (int i = 0; i < longitud; i++) {
         if (isalpha(texto[i])) {
@@ -89,7 +89,7 @@ bool contieneLetras(const char* texto) {
     return false; // El texto no contiene letras
 }
 
-bool contienePuntos(const char* texto) {
+bool contienePuntos(const char* texto) {"""verifica si la parte de la cadena contiene puntos"""
     int longitud = strlen(texto);
     int puntos = 0;
     for (int i = 0; i < longitud; i++) {
@@ -103,7 +103,7 @@ bool contienePuntos(const char* texto) {
     return false; // El texto no contiene puntos
 }
 
-bool esNumero(const char* str) {
+bool esNumero(const char* str) {"""verifica si la parte de la cadena contiene numeros """
     int len = strlen(str);
     for (int i = 0; i < len; i++) {
         if (!isdigit(str[i])) {
@@ -113,7 +113,7 @@ bool esNumero(const char* str) {
     return true;
 }
 
-bool esNumeroDecimal(const char* str) {
+bool esNumeroDecimal(const char* str) {"""verifica si la parte de la cadena contienen numeros decimales"""
     int len = strlen(str);
     int puntosDecimales = 0;
     for (int i = 0; i < len; i++) {
@@ -129,12 +129,12 @@ bool esNumeroDecimal(const char* str) {
     return puntosDecimales == 1;
 }
 
-bool esCadenaTexto(const char* str) {
+bool esCadenaTexto(const char* str) {"""verifica si la parte de la cadena es cadena de texto"""
     int len = strlen(str);
     return len >= 2 && str[0] == '"' && str[len - 1] == '"';
 }
 
-void imprimirTabla(const char* elemento, const char* tipo, const char* numTipo) {
+void imprimirTabla(const char* elemento, const char* tipo, const char* numTipo) {"""impresion de las partes de la cadena con su respectivo valor en token"""
     const int anchoElemento = 25;
     const int anchoTipo = 30;
     const int anchoNumTipo = 40;
@@ -142,7 +142,7 @@ void imprimirTabla(const char* elemento, const char* tipo, const char* numTipo) 
     cout << left << setw(anchoElemento) << elemento << " => " << setw(anchoTipo) << tipo << setw(anchoNumTipo) << numTipo << endl;
 }
 
-void analizar(const char* str) {
+void analizar(const char* str) {"""analiza parte por parte la cadena para identificar, numeros,operadores,simbolos"""
     int len = strlen(str);
     int i = 0;
 
@@ -318,17 +318,17 @@ void analizar(const char* str) {
     }
 }
 
-int main() {
+int main() { """recibe la cadena """
     char codigo[1000];
 
     cout << "-ANALIZADOR LEXICO-" << endl;
-    cout << "Línea a analizar: ";
-    cin.getline(codigo, sizeof(codigo));
+    cout << "Línea a analizar: "; 
+    cin.getline(codigo, sizeof(codigo)); """obtiene cadena"""
 
     cout << "Elemento" << setw(30) << "Tipo de Token" << setw(23) << "#" << endl;
     cout << "------------------------------------------------------------------------------------------" << endl;
 
-    analizar(codigo);
+    analizar(codigo); """empieza a analizar la cadena"""
 
     cout << "\n\n\n";
     return 0;
